@@ -3,19 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Presentation.Api", "Crypto.Presentation.Api\Crypto.Presentation.Api.csproj", "{1065DBB8-B51E-45AC-97A6-6FFBDC6E5AA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypto.Presentation.Api", "Crypto.Presentation.Api\Crypto.Presentation.Api.csproj", "{1065DBB8-B51E-45AC-97A6-6FFBDC6E5AA0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{415B4B42-431A-4DC9-94E1-735CC46EB7F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Domain.Models", "Crypto.Domain.Models\Crypto.Domain.Models.csproj", "{12F602F6-AACE-440C-9C75-589A17F66C34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypto.Domain.Models", "Crypto.Domain.Models\Crypto.Domain.Models.csproj", "{12F602F6-AACE-440C-9C75-589A17F66C34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{107F5FF7-13D4-4BDF-A912-890741903EB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Infrastructure.Store", "Crypto.Infrastructure.Store\Crypto.Infrastructure.Store.csproj", "{686F6029-375A-437B-9F66-391B8CB6027B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypto.Infrastructure.Store", "Crypto.Infrastructure.Store\Crypto.Infrastructure.Store.csproj", "{686F6029-375A-437B-9F66-391B8CB6027B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C8BC7D5B-0403-4908-BE5F-3CC3DAAAD41D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Application.CQRS", "Crypto.Application.CQRS\Crypto.Application.CQRS.csproj", "{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypto.Application.CQRS", "Crypto.Application.CQRS\Crypto.Application.CQRS.csproj", "{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Domain.Repository", "Crypto.Domain.Repository\Crypto.Domain.Repository.csproj", "{E61A84C0-5FC2-4429-B225-8C47F52732D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Infrastructure.Repository", "Crypto.Infrastructure.Repository\Crypto.Infrastructure.Repository.csproj", "{314A2A14-25B0-44F1-B288-93B424A58436}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Domain.Services", "Crypto.Domain.Services\Crypto.Domain.Services.csproj", "{D7F18CCA-D08A-41D0-A3E0-002419A67A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Infrastructure.Services", "Crypto.Infrastructure.Services\Crypto.Infrastructure.Services.csproj", "{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto.Infrastructure.Shared", "Crypto.Infrastructure.Shared\Crypto.Infrastructure.Shared.csproj", "{C7F48E11-3458-4D41-9467-1D0190F98B79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +49,26 @@ Global
 		{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61A84C0-5FC2-4429-B225-8C47F52732D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61A84C0-5FC2-4429-B225-8C47F52732D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61A84C0-5FC2-4429-B225-8C47F52732D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61A84C0-5FC2-4429-B225-8C47F52732D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314A2A14-25B0-44F1-B288-93B424A58436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314A2A14-25B0-44F1-B288-93B424A58436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314A2A14-25B0-44F1-B288-93B424A58436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314A2A14-25B0-44F1-B288-93B424A58436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F18CCA-D08A-41D0-A3E0-002419A67A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F18CCA-D08A-41D0-A3E0-002419A67A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F18CCA-D08A-41D0-A3E0-002419A67A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F18CCA-D08A-41D0-A3E0-002419A67A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F48E11-3458-4D41-9467-1D0190F98B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F48E11-3458-4D41-9467-1D0190F98B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F48E11-3458-4D41-9467-1D0190F98B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F48E11-3458-4D41-9467-1D0190F98B79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +77,11 @@ Global
 		{12F602F6-AACE-440C-9C75-589A17F66C34} = {415B4B42-431A-4DC9-94E1-735CC46EB7F2}
 		{686F6029-375A-437B-9F66-391B8CB6027B} = {107F5FF7-13D4-4BDF-A912-890741903EB3}
 		{EFB08363-8C9E-4D11-ABD8-7A78F0DD10B2} = {C8BC7D5B-0403-4908-BE5F-3CC3DAAAD41D}
+		{E61A84C0-5FC2-4429-B225-8C47F52732D9} = {415B4B42-431A-4DC9-94E1-735CC46EB7F2}
+		{314A2A14-25B0-44F1-B288-93B424A58436} = {107F5FF7-13D4-4BDF-A912-890741903EB3}
+		{D7F18CCA-D08A-41D0-A3E0-002419A67A5D} = {415B4B42-431A-4DC9-94E1-735CC46EB7F2}
+		{AE2FD827-0434-4A3E-A638-0ECC1D35D2CB} = {107F5FF7-13D4-4BDF-A912-890741903EB3}
+		{C7F48E11-3458-4D41-9467-1D0190F98B79} = {107F5FF7-13D4-4BDF-A912-890741903EB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C936B374-7364-4693-87AF-292F0583557F}

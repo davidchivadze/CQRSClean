@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Crypto.Domain.Models.EntityModels
 {
-    public class OrderBook
+    public class OrderBook: BaseEntity
     {
         [Key]
         public int Id { get; set; }
@@ -25,8 +25,8 @@ namespace Crypto.Domain.Models.EntityModels
         public decimal Fee { get; set; }
         public decimal FeeAmount { get; set; }
         public bool Status { get; set; }
-        public DateTime CreateDate { get; set; }=DateTime.Now;
-        public DateTime LastUpdateDate { get; set; }=DateTime.Now;
+        public DateTime CreateDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
         public Client Client { get; set; }
         public Currency BuyCurrency { get; set; }
         public Currency SellCurrency { get; set; }

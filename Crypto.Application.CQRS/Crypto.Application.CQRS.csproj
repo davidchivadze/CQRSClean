@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Crypto.Domain.Models\Crypto.Domain.Models.csproj" />
+    <ProjectReference Include="..\Crypto.Domain.Services\Crypto.Domain.Services.csproj" />
   </ItemGroup>
 
 </Project>

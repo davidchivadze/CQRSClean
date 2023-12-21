@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crypto.Application.CQRS.Response
+namespace Crypto.Domain.Models.Request
 {
-    public class GetOrderResponse
+    public class GetOrderRequest
     {
-        public string Id { get; set; }
+        public int OrderID { get; set; }
     }
 }

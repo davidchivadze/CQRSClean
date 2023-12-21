@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Crypto.Domain.Models\Crypto.Domain.Models.csproj" />
+    <ProjectReference Include="..\Crypto.Domain.Repository\Crypto.Domain.Repository.csproj" />
+    <ProjectReference Include="..\Crypto.Infrastructure.Store\Crypto.Infrastructure.Store.csproj" />
+  </ItemGroup>
+
+</Project>

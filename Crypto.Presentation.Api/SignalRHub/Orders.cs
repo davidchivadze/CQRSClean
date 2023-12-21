@@ -14,7 +14,7 @@
         [SignalRHub("/orders")]
         public class Orders : Hub
         {
-            private CancellationTokenSource _cancellationTokenSource;
+            //private CancellationTokenSource _cancellationTokenSource;
 
             //public override async Task OnConnectedAsync()
             //{

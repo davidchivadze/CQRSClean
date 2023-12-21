@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Crypto.Domain.Models.EntityModels
 {
-    public class ClientAccount
+    public class ClientAccount: BaseEntity
     {
         [Key]
         public int Id { get; set; }

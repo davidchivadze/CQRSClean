@@ -1,16 +1,13 @@
-using Crypto.Application.CQRS.Handlers.Query;
-using Crypto.Application.CQRS.Query;
-using Crypto.Application.CQRS.Response;
 using Crypto.Infrastructure.Store;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Crypto.Presentation.Api.SignalRHub.Crypto.Application.CQRS.Handlers.Query;
+using Crypto.Domain.Services;
+using Crypto.Infrastructure.Services;
+using Crypto.Domain.Repository.UnitOfWork;
+using Crypto.Infrastructure.Repository.UnitOfWork;
 
 internal class Program
 {
@@ -39,6 +36,10 @@ internal class Program
         {
             options.UseNpgsql(builder.Configuration.GetConnectionString("CryptoConnection"));
         });
+
+        builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+        builder.Services.AddScoped<IClientService, ClientService>();
+        builder.Services.AddScoped<IOrderBookService, OrderBookService>();
 
         var assembly = typeof(Crypto.Application.CQRS.Handlers.BaseHandler).Assembly;
         builder.Services.AddMediatR(config => { config.RegisterServicesFromAssemblies(Assembly.Load("Crypto.Application.CQRS")); });

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Crypto.Domain.Models.EntityModels
 {
-    public class Currency
+    public class Currency: BaseEntity
     {
         [Key]
         public int Id { get; set; } 

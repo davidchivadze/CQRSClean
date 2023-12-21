@@ -2,7 +2,7 @@
 
 namespace Crypto.Domain.Models.EntityModels
 {
-    public class Client
+    public class Client:BaseEntity
     {
         [Key]
         public int Id { get; set; }

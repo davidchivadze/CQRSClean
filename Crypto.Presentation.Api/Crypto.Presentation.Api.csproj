@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Crypto.Application.CQRS\Crypto.Application.CQRS.csproj" />
+    <ProjectReference Include="..\Crypto.Domain.Services\Crypto.Domain.Services.csproj" />
+    <ProjectReference Include="..\Crypto.Infrastructure.Repository\Crypto.Infrastructure.Repository.csproj" />
+    <ProjectReference Include="..\Crypto.Infrastructure.Services\Crypto.Infrastructure.Services.csproj" />
     <ProjectReference Include="..\Crypto.Infrastructure.Store\Crypto.Infrastructure.Store.csproj" />
   </ItemGroup>
 

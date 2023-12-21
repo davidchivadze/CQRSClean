@@ -1,6 +1,6 @@
-﻿using Crypto.Application.CQRS.Handlers.Query;
-using Crypto.Application.CQRS.Query;
-using Crypto.Application.CQRS.Response;
+﻿using Crypto.Application.CQRS.Query;
+using Crypto.Domain.Models.Request;
+using Crypto.Domain.Models.Response;
 using Crypto.Presentation.Api.SignalRHub.Crypto.Application.CQRS.Handlers.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +20,10 @@ namespace Crypto.Presentation.Api.Controllers
             _hubContext=handler;
         }
         [HttpGet("GetOrders")]
-        public async Task<GetOrderResponse> Index([FromQuery]GetOrderQuery query)
+        public async Task<List<GetOrderResponse>> Index([FromQuery]GetOrderRequest query)
         {
             await _hubContext.Clients.All.SendAsync("ReceiveOrderUpdate", query);
-            return await _mediator.Send(query);
+            return await _mediator.Send(new GetOrderQuery(query));
         }
     }
 }
