@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalR Client</title>
+</head>
+<body>
+<h1>SignalR Client</h1>
+<ul id="orders-list" style="background-color: red;width: 100%;height: 200px;"></ul>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.11/signalr.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:7641/orders/SendGuidsToClients") // Update with your actual hub URL
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start()
+            .then(() => {
+                console.log("Connection to SignalR hub established");
+
+                // Subscribe to the "ReceiveOrderUpdate" event
+                connection.on("ReceiveOrderUpdate", (message) => {
+                    $('#orders-list').append(message.id.toString());
+                console.log(message);
+                });
+            })
+            .catch(error => {
+                console.error(`Error connecting to SignalR hub: ${error}`);
+            });
+
+        // Make a request to /Orders/GetOrders (or the appropriate endpoint)
+        // $.ajax({
+        //     url: "http://localhost:7641/Orders/GetOrders", // Update with the appropriate endpoint
+        //     method: "GET",
+        //     success: orders => {
+        //         // Process orders and display them
+        //
+        //            console.log(orders)
+        //     },
+        //     error: error => {
+        //         console.error(`Error fetching orders: ${error.statusText}`);
+        //     }
+        // });
+    });
+</script>
+</body>
+</html>
