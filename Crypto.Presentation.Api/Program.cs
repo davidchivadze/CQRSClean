@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Crypto.Presentation.Api.SignalRHub.Crypto.Application.CQRS.Handlers.Query;
-using Crypto.Domain.Services;
-using Crypto.Infrastructure.Services;
 using Crypto.Domain.Repository.UnitOfWork;
 using Crypto.Infrastructure.Repository.UnitOfWork;
+using AutoMapper;
+using Crypto.Presentation.Api.ApiHelpers.ActionFilter.Validation;
+using Crypto.Presentation.Api.ApiHelpers.Middlewares;
+using Crypto.Presentation.Api.ApiHelpers.Mapper;
+using Crypto.Presentation.Api.Worker;
 
 internal class Program
 {
@@ -21,14 +24,17 @@ internal class Program
             options.AddPolicy(name: "CorsPolicy",
                 policy =>
                 {
-                    policy.WithOrigins("http://localhost:63342")
+                    policy.WithOrigins("http://localhost:63343")
                           .AllowAnyMethod()
                           .AllowAnyHeader()
                           .AllowCredentials();
                 });
         });
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers(opt =>
+        {
+            opt.Filters.Add<ValidationActionFilter>();
+        });
         builder.Services.AddSignalR();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -37,9 +43,8 @@ internal class Program
             options.UseNpgsql(builder.Configuration.GetConnectionString("CryptoConnection"));
         });
 
+
         builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
-        builder.Services.AddScoped<IClientService, ClientService>();
-        builder.Services.AddScoped<IOrderBookService, OrderBookService>();
 
         var assembly = typeof(Crypto.Application.CQRS.Handlers.BaseHandler).Assembly;
         builder.Services.AddMediatR(config => { config.RegisterServicesFromAssemblies(Assembly.Load("Crypto.Application.CQRS")); });
@@ -47,18 +52,23 @@ internal class Program
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
 
-            // Add SignalR support to Swagger
+
             c.AddSignalRSwaggerGen();
-
-            // Other Swagger configuration...
         });
-        var app = builder.Build();
 
-        // Apply CORS before routing and SignalR hub mapping
+        var mappingConfig = new MapperConfiguration(mc =>
+        {
+            mc.AddProfile(new MappingProfiles());
+        });
+
+        IMapper mapper = mappingConfig.CreateMapper();
+        builder.Services.AddSingleton(mapper);
+       // builder.Services.AddHostedService<OrderManager>();
+        var app = builder.Build();
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
         app.UseCors("CorsPolicy");
 
-        app.MapHub<Orders>("/orders/SendGuidsToClients");
-        
+        app.MapHub<Orders>("/orders/GetOrder");
 
         if (app.Environment.IsDevelopment())
         {

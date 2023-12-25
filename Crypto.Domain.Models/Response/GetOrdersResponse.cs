@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Crypto.Domain.Models.Response
 {
-    public class GetOrderResponse
+    public class GetOrdersResponse
     {
+
         public int Id { get; set; }
 
         public int ClientID { get; set; }
@@ -22,6 +25,6 @@ namespace Crypto.Domain.Models.Response
         public decimal FeeAmount { get; set; }
         public bool Status { get; set; }
         public DateTimeOffset CreateDate { get; set; }
-        public DateTimeOffset LastUpdateDate { get; set; }
+        public DateTimeOffset LastUpdateDate { get; set; } 
     }
 }

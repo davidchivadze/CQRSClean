@@ -5,6 +5,7 @@ namespace Crypto.Domain.Models.EntityModels
 {
     public class ClientAccount: BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         [ForeignKey("Currency")]

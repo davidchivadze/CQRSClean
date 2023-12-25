@@ -22,6 +22,11 @@ namespace Crypto.Infrastructure.Repository
             return entity;
 
         }
+        public async Task<T> AddAsync(T entity)
+        {
+            await _DbSet.AddAsync(entity);
+            return entity;
+        }
 
         public IQueryable<T> GetAll()
         {
@@ -41,7 +46,8 @@ namespace Crypto.Infrastructure.Repository
 
         public void Update(T entity)
         {
-           _CryptoContext.Entry(entity).State = EntityState.Modified;
+            _CryptoContext.Update(entity);
+          // _CryptoContext.Entry(entity).State = EntityState.Modified;
         }
         public void Save()
         {

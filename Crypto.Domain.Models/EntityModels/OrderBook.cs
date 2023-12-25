@@ -10,6 +10,7 @@ namespace Crypto.Domain.Models.EntityModels
 {
     public class OrderBook: BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         [ForeignKey("Client")]
@@ -25,8 +26,8 @@ namespace Crypto.Domain.Models.EntityModels
         public decimal Fee { get; set; }
         public decimal FeeAmount { get; set; }
         public bool Status { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime LastUpdateDate { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
+        public DateTimeOffset LastUpdateDate { get; set; }
         public Client Client { get; set; }
         public Currency BuyCurrency { get; set; }
         public Currency SellCurrency { get; set; }

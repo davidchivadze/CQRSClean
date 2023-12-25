@@ -1,4 +1,5 @@
 ﻿using Crypto.Domain.Models.EntityModels;
+using Crypto.Infrastructure.Store.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crypto.Infrastructure.Store
@@ -13,6 +14,9 @@ namespace Crypto.Infrastructure.Store
         public DbSet<Client> Clients { get; set; }
         public DbSet<OrderBook> Orders { get; set; }
         public DbSet<ClientAccount> ClientAccounts { get; set; }
-
-    }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            SeedStartData.Seed(modelBuilder);
+        }
+     }
 }

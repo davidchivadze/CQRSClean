@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crypto.Domain.Models.Request
+namespace Crypto.Domain.Models.Enums
 {
-    public class GetOrderRequest
+   public enum TradeType
     {
-        public int OrderID { get; set; }
+        Sell,
+        Buy
     }
 }

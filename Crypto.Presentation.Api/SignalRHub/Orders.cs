@@ -1,6 +1,10 @@
 ﻿namespace Crypto.Presentation.Api.SignalRHub
 {
+    using AutoMapper;
     using global::Crypto.Application.CQRS.Query;
+    using global::Crypto.Application.CQRS.Query.Order;
+    using global::Crypto.Domain.Models.Response;
+    using MediatR;
     using Microsoft.AspNetCore.SignalR;
     using SignalRSwaggerGen.Attributes;
     using System;
@@ -11,33 +15,25 @@
         /// <summary>
         /// Represents a SignalR hub for handling order-related operations.
         /// </summary>
-        [SignalRHub("/orders")]
+        [SignalRHub("/orders/GetOrder")]
         public class Orders : Hub
         {
-            //private CancellationTokenSource _cancellationTokenSource;
-
-            //public override async Task OnConnectedAsync()
-            //{
-            //    _cancellationTokenSource = new CancellationTokenSource();
-
-            //    await SendGuidsToClients(null,_cancellationTokenSource.Token);
-            //    await base.OnConnectedAsync();
-            //}
-
-            //public override Task OnDisconnectedAsync(Exception exception)
-            //{
-            //    _cancellationTokenSource?.Cancel();
-            //    return base.OnDisconnectedAsync(exception);
-            //}
-            /// <summary>
-            /// Sends a new order notification to connected clients.
-            /// </summary>
-            /// <param name="orderId">The ID of the new order.</param>
-            public async Task SendGuidsToClients(GetOrderQuery query, CancellationToken token)
+            private readonly IMediator _mediator;
+            public Orders(IMediator mediator)
             {
-                if (query != null)
+                _mediator = mediator;
+            }
+
+
+            public async Task SendOrderUpdate(GetOrderQuery data)
+            {
+                var result = await _mediator.Send(data);
+
+                if (result != null)
                 {
-                    await Clients.All.SendAsync("ReceiveOrderUpdate", query);
+                    // Assuming GetOrderQuery returns Result<GetOrderResponse>
+                    var updateOrderResponse = result;
+                    await Clients.All.SendAsync("SendOrderUpdate", updateOrderResponse);
                 }
             }
 
