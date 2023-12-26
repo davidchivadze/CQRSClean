@@ -11,7 +11,6 @@ namespace Crypto.Domain.Models.Request
     public class GetOrdersRequest
     {
         [Required(ErrorMessage="TradeType is Required")]
-        public TradeType? TradeType { get; set; }
         public int? BuyCurrencyID { get; set; } 
         public int? SellCurrencyID { get; set; }
     }

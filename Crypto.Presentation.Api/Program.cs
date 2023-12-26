@@ -63,7 +63,7 @@ internal class Program
 
         IMapper mapper = mappingConfig.CreateMapper();
         builder.Services.AddSingleton(mapper);
-       // builder.Services.AddHostedService<OrderManager>();
+        builder.Services.AddHostedService<OrderManager>();
         var app = builder.Build();
         app.UseMiddleware<ExceptionHandlingMiddleware>();
         app.UseCors("CorsPolicy");
@@ -86,7 +86,19 @@ internal class Program
         app.UseRouting();
 
         app.MapControllers();
-
+        ApplyMigration();
         app.Run();
+
+        void ApplyMigration()
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var _db = scope.ServiceProvider.GetRequiredService<CryptoContext>();
+                if (_db.Database.GetPendingMigrations().Count() > 0)
+                {
+                    _db.Database.Migrate();
+                }
+            }
+        }
     }
 }

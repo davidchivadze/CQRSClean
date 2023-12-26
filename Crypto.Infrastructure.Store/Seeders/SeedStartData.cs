@@ -27,7 +27,9 @@ namespace Crypto.Infrastructure.Store.Seeders
             {
                 Id = 1,
                 FirstName = "Davit",
-                LastName = "Chivadze"
+                LastName = "Chivadze",
+                Email="Davidchivadze96@gmail.com",
+                Password="123"
             });
             modelBuilder.Entity<ClientAccount>().HasData(new ClientAccount()
             {
@@ -43,7 +45,31 @@ namespace Crypto.Infrastructure.Store.Seeders
                 ClientId = 1,
                 CurrencyID = 2,
                 AccountNumber = "123456789123",
+                Amount = 100000,
+            });
+            modelBuilder.Entity<Client>().HasData(new Client()
+            {
+                Id = 2,
+                FirstName = "Shalva",
+                LastName = "Gigauri",
+                Email = "gigaurishalva@gmail.com",
+                Password = "123"
+            });
+            modelBuilder.Entity<ClientAccount>().HasData(new ClientAccount()
+            {
+                Id = 3,
+                ClientId = 2,
+                CurrencyID = 1,
+                AccountNumber = "1234567891235",
                 Amount = 50,
+            });
+            modelBuilder.Entity<ClientAccount>().HasData(new ClientAccount()
+            {
+                Id = 4,
+                ClientId = 2,
+                CurrencyID = 2,
+                AccountNumber = "1234567891235",
+                Amount = 100000,
             });
         }
     }

@@ -3,6 +3,7 @@ using System;
 using Crypto.Infrastructure.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Crypto.Infrastructure.Store.Migrations
 {
     [DbContext(typeof(CryptoContext))]
-    partial class CryptoContextModelSnapshot : ModelSnapshot
+    [Migration("20231225235918_addTrade")]
+    partial class addTrade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,18 +53,8 @@ namespace Crypto.Infrastructure.Store.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "Davidchivadze96@gmail.com",
                             FirstName = "Davit",
-                            LastName = "Chivadze",
-                            Password = "123"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "gigaurishalva@gmail.com",
-                            FirstName = "Shalva",
-                            LastName = "Gigauri",
-                            Password = "123"
+                            LastName = "Chivadze"
                         });
                 });
 
@@ -106,24 +99,8 @@ namespace Crypto.Infrastructure.Store.Migrations
                         {
                             Id = 2,
                             AccountNumber = "123456789123",
-                            Amount = 100000m,
-                            ClientId = 1,
-                            CurrencyID = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccountNumber = "1234567891235",
                             Amount = 50m,
-                            ClientId = 2,
-                            CurrencyID = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AccountNumber = "1234567891235",
-                            Amount = 100000m,
-                            ClientId = 2,
+                            ClientId = 1,
                             CurrencyID = 2
                         });
                 });
@@ -195,6 +172,9 @@ namespace Crypto.Infrastructure.Store.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("State")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TradeType")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

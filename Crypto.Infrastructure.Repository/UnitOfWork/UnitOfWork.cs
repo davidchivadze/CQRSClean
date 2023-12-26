@@ -15,10 +15,25 @@ namespace Crypto.Infrastructure.Repository.UnitOfWork
         private IDbContextTransaction _transaction;
         private IClientRepository _ClientRepository;
         private IOrderBookRepository _OrderBookRepository;
+        private IAccountRepository _AccountRepository;
+        private ITradeRepository _TradeRepository;
+        private IPriceMonitorRepository _PriceMonitorRepository;
 
         public IClientRepository ClientRepository
         {
             get { return _ClientRepository = _ClientRepository ?? new ClientRepository(context); }
+        }
+        public IAccountRepository AccountRepository
+        {
+            get { return _AccountRepository=_AccountRepository ?? new AccountRepository(context);}
+        }
+        public IPriceMonitorRepository PriceMonitorRepository
+        {
+            get { return _PriceMonitorRepository = _PriceMonitorRepository ?? new PriceMonitorRepository(context); }
+        }
+        public ITradeRepository TradeRepository
+        {
+            get { return _TradeRepository = _TradeRepository ?? new TradeRepository(context); }
         }
         public IOrderBookRepository OrderBookRepository
         {

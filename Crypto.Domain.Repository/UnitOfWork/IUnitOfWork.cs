@@ -10,7 +10,9 @@ namespace Crypto.Domain.Repository.UnitOfWork
     {
         IClientRepository ClientRepository { get; }
         IOrderBookRepository OrderBookRepository { get; }
-
+        IAccountRepository AccountRepository { get; }
+        ITradeRepository TradeRepository { get; }
+        IPriceMonitorRepository PriceMonitorRepository { get; }
         Task<IDisposable> BeginTransactionAsync();
         IDisposable BeginTransaction();
         void CommitTransaction();

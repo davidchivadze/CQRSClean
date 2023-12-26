@@ -15,7 +15,6 @@ namespace Crypto.Domain.Models.EntityModels
         public int Id { get; set; }
         [ForeignKey("Client")]
         public int ClientID {  get; set; }
-        public int TradeType { get; set; }
         [ForeignKey("BuyCurrency")]
         public int BuyCurrencyID { get;set; }
         [ForeignKey("SellCurrency")]
@@ -25,7 +24,7 @@ namespace Crypto.Domain.Models.EntityModels
         public decimal ExchangeRate { get; set; }
         public decimal Fee { get; set; }
         public decimal FeeAmount { get; set; }
-        public bool Status { get; set; }
+        public int State { get; set; }
         public DateTimeOffset CreateDate { get; set; }
         public DateTimeOffset LastUpdateDate { get; set; }
         public Client Client { get; set; }

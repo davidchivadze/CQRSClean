@@ -28,7 +28,13 @@ namespace Crypto.Presentation.Api.ApiHelpers.Mapper
             CreateMap<OrderBook, GetOrderResponse>();
             CreateMap<UpdateOrderResponse, GetOrderQuery>().ForMember(dest => dest.OrderID, opt => opt.MapFrom(src => src.OrderId));
             CreateMap<GetOrderQuery, ProcessOrderCommand>();
+            CreateMap<ProcessOrderRequest,ProcessOrderCommand>();
             CreateMap<ProcessOrderCommand, ProcessOrderRequest>();
+            CreateMap<OrderBook, DeleteOrderResponse>()
+                .ForMember(dest => dest.OrderID,opt=>opt.MapFrom(src=>src.Id));
+            CreateMap<DeleteOrderResponse,ProcessOrderCommand>();
+            CreateMap<DeleteOrderRequest, DeleteOrderCommand>();
+            CreateMap<CreateOrderResponse, ProcessOrderCommand>();
 
         }
     }

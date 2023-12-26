@@ -26,7 +26,7 @@ namespace Crypto.Presentation.Api.ApiHelpers.Middlewares
 
                 string jsonResponse = "";
                 var errorResponse = Result<object>.ReturnCode(ex);
-                jsonResponse = JsonConvert.SerializeObject(errorResponse);
+                jsonResponse = JsonConvert.SerializeObject(errorResponse.Value);
                 context.Response.StatusCode = (int)errorResponse.StatusCode;
 
                 context.Response.ContentType = "application/json";

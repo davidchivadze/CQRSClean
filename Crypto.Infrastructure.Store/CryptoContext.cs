@@ -14,6 +14,8 @@ namespace Crypto.Infrastructure.Store
         public DbSet<Client> Clients { get; set; }
         public DbSet<OrderBook> Orders { get; set; }
         public DbSet<ClientAccount> ClientAccounts { get; set; }
+        public DbSet<PriceMonitor> PriceMonitor { get;set; }
+        public DbSet<Trade> Trades { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             SeedStartData.Seed(modelBuilder);

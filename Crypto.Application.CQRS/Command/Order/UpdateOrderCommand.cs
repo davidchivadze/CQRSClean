@@ -13,7 +13,6 @@ namespace Crypto.Application.CQRS.Command.Order
     {
         public int OrderID { get; set; }
         public int ClientID { get; set; }
-        public int TradeType { get; set; }
         public int BuyCurrencyID { get; set; }
         public int SellCurrencyID { get; set; }
         public decimal BuyAmount { get; set; }

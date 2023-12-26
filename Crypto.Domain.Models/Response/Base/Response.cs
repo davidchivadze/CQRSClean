@@ -20,7 +20,7 @@ namespace Crypto.Domain.Models.Responses.Base
         }
         public Response(HttpStatusCode statusCode, string message)
         {
-            statusCode = statusCode;
+            StatusCode = statusCode;
             Message = new List<string>() { message };
         }
         public Response(T data)

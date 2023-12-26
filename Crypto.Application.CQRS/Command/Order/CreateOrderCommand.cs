@@ -7,7 +7,6 @@ namespace Crypto.Application.CQRS.Command.Order
     public class CreateOrderCommand : IRequest<CreateOrderResponse>
     {
         public int ClientID { get; set; }
-        public int TradeType { get; set; }
         public int BuyCurrencyID { get; set; }
         public int SellCurrencyID { get; set; }
         public decimal BuyAmount { get; set; }

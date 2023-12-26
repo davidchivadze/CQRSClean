@@ -11,5 +11,7 @@ namespace Crypto.Domain.Repository
     public interface IOrderBookRepository:IBaseRepository<OrderBook>
     {
         Task<IQueryable<OrderBook>> GetOrderBooksAsync(TradeType tradeType, int? buyCurrencyID, int? sellCurrencyID);
+        Task<OrderBook> GetAvailableOrderForTrade(OrderBook order);
+        void DeleteOrder(OrderBook orderBook);
     }
 }
